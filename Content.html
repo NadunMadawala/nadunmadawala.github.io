@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>PS Portfolio</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+
+        :root {
+            --primary-color: #3685fb;
+            --primary-color-dark: #2f73d9;
+            --secondary-color: #fafcff;
+            --text-dark: #0d213f;
+            --text-light: #767268;
+            --extra-light: #ffffff;
+            --max-width: 1200px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            outline: none;
+            border: none;
+            font-size: 1rem;
+            color: var(--extra-light);
+            background-color: var(--primary-color);
+            border-radius: 5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color-dark);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        nav {
+            padding: 1rem;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: var(--max-width);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .nav__logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .nav__logo span {
+            color: var(--primary-color);
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .link a {
+            padding: 0 1rem;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .link a:hover {
+            color: var(--primary-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+        }
+
+        .wrapper {
+            background: var(--secondary-color);
+            padding: 25px;
+            border-radius: 3px;
+            box-shadow: -3px -3px 7px #ffffff73,
+                3px 3px 5px #5e687949;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+        }
+
+        .pagination li {
+            background: #dde1e7;
+            flex: 1;
+            margin: 0px 5px;
+            border-radius: 3px;
+            box-shadow: -3px -3px 7px #ffffff73,
+                3px 3px 5px #5e687949;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination li a {
+            height: 45px;
+            width: 55px;
+            color: #4d3252;
+            font-size: 18px;
+            text-decoration: none;
+            display: block;
+            line-height: 45px;
+            display: flex;
+            /* Add this to enable flex properties */
+            align-items: center;
+            /* Align items vertically in the center */
+            justify-content: center;
+            /* Center the content horizontally */
+        }
+
+        .pagination li:first-child a {
+            width: 120px;
+
+        }
+
+        .pagination li:last-child a {
+            width: 100px;
+        }
+
+        .pagination li.active {
+            box-shadow: inset -3px -3px 7px #ffffff73;
+            inset: 3px 3px 5px #5e687949;
+        }
+
+        .pagination li.active a {
+            font-size: 17px;
+            color: #6f6cde;
+        }
+
+        .pagination li:first-child {
+            margin: 0 0 0 15px;
+        }
+
+        .pagination li:last-child {
+            margin: 0 0 0 15px;
+        }
+
+
+
+
+        .weekContainer {
+            margin: 20px auto;
+            padding: 40px;
+            background-color: #92959a49;
+            border: solid #2f73d9;
+            border-radius: 30px;
+            max-width: 1000px;
+
+        }
+
+        .weekContainer a button {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .destination__nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .destination__nav span {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-content: center;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 100%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .destination__nav span:hover {
+            color: var(--extra-light);
+            background-color: var(--primary-color);
+        }
+
+        .destination__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .destination__card {
+            overflow: hidden;
+            position: relative;
+            isolation: isolate;
+            cursor: pointer;
+        }
+
+        .destination__card img {
+            border-radius: 1rem;
+        }
+
+        .destination__details {
+            position: absolute;
+            width: calc(100% - 2rem);
+            padding: 1rem;
+            bottom: -6rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--extra-light);
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border-radius: 10px;
+            z-index: 1;
+            transition: 0.3s;
+        }
+
+        .destination__card:hover .destination__details {
+            bottom: 1rem;
+        }
+
+        .destination__title {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .destination__subtitle {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo-container img {
+            width: 80px;
+            /* Adjust the width as needed */
+            height: auto;
+        }
+
+        .section__title {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+
+        h1 {
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+
+        .section__subtitle {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #767268;
+            /* Adjust the color as needed */
+        }
+
+        .section__title {
+            font-size: 1.5rem;
+            /* Adjust the font size as needed */
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .footer {
+            background-color: var(--text-dark);
+            justify-content: end;
+        }
+
+        .footer__container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5rem;
+            color: var(--secondary-color);
+        }
+
+        .footer__col h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .footer__col h3 span {
+            color: var(--primary-color);
+        }
+
+        .footer__col a {
+            color: var(--extra-light);
+            text-decoration: none;
+        }
+
+        .footer__col p {
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .footer__col p:hover {
+            color: var(--primary-color);
+        }
+
+        .footer__col p span {
+            font-weight: 600;
+        }
+
+        .footer__col h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .footer__bar {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            border-top: 1px solid var(--text-light);
+        }
+
+        @media (width < 1200px) {
+            .header__image img:nth-child(1) {
+                max-width: 300px;
+            }
+
+            .header__image img:nth-child(2) {
+                max-width: 200px;
+            }
+        }
+
+        @media (width < 900px) {
+            .nav__links {
+                display: none;
+            }
+
+            .header__container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .header__image {
+                min-height: 500px;
+            }
+
+            .destination__grid {
+                gap: 1rem;
+            }
+
+            .trip__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav__links {
+                display: none;
+            }
+
+            .destination__grid {
+                gap: 1rem;
+            }
+
+            .trip__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+
+
+        }
+
+        @media (width < 600px) {
+
+            .footer__container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            footer {
+                bottom: 0;
+            }
+
+            .wrapper {
+                flex-direction: column;
+            }
+
+            .pagination {
+                flex-direction: column;
+            }
+
+            .pagination li {
+                margin: 5px 0;
+            }
+
+        }
+
+        .wrapperslid {
+            display: flex;
+            max-width: 600px;
+            width: 100%;
+            height: 400px;
+            background: #fff;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapperslid i.button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 36px;
+            width: 36px;
+            background-color: #343f4f;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            color: #fff;
+            font-size: 15px;
+            transition: all 0.3s linear;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        i.button:active {
+            transform: scale(0.94) translateY(-50%);
+        }
+
+        i#prev {
+            left: 25px;
+        }
+
+        i#next {
+            right: 25px;
+        }
+
+        .image-container {
+            height: 320px;
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .image-container .carousel {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: all 0.4s ease;
+        }
+
+        .carousel img {
+            height: 100%;
+            width: 100%;
+            border-radius: 18px;
+            border: 10px solid #fff;
+            object-fit: cover;
+        }
+
+        .wrapperslid {
+            display: flex;
+            align-items: center;
+            /* Align items vertically in the center */
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+        }
+
+        .carousel img {
+            width: 100%;
+            /* Ensure images take the full width of the container */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        .button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            /* Adjust the font size as needed */
+            cursor: pointer;
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+
+        .btn {
+            margin-left: 10px;
+            /* Adjust the margin as needed */
+        }
+
+        .weekContainer .destination__card img {
+            display: block;
+            margin: 0 auto;
+            /* Center the image horizontally */
+            width: auto;
+            height: 300px;
+        }
+
+        .weekContainer .destination__card video {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+
+        }
+
+
+        .weekContainer .destination__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .weekContainer .destination__card {
+            overflow: hidden;
+            position: relative;
+            isolation: isolate;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .weekContainer .destination__card img {
+            border-radius: 1rem;
+            width: 300px;
+            /* Make the image fill the container width */
+            height: 200px;
+            /* Maintain the aspect ratio */
+        }
+
+        /* Add media query for smaller screens */
+        @media (max-width: 600px) {
+            .weekContainer .destination__grid {
+                grid-template-columns: 1fr;
+                /* Display one column on small screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav__logo">NadunMadawala<span>.</span></div>
+        <ul class="nav__links">
+            <li class="link"><a href="index.html">Home</a></li>
+            <li class="link"><a href="timeline.html">TimeLine</a></li>
+            <li class="link"><a href="Content.html">Content</a></li>
+
+        </ul>
+        <a href="/Notes and pdf/Professional Modern CV Resume (2).pdf" download="NadunMadawalaCV"><button
+                class="btn">Download CV</button></a>
+    </nav>
+
+    <div class="wrapper">
+        <ul class="pagination">
+
+            <li><a href="#1">1</a></li>
+            <li><a href="#2"> 2</a></li>
+            <li><a href="#3"> 3</a></li>
+            <li><a href="#4"> 4</a></li>
+            <li><a href="#5"> 5</a></li>
+            <li><a href="#6"> 6</a></li>
+            <li><a href="#7"> 7</a></li>
+            <li><a href="#8"> 8</a></li>
+            <li><a href="#9"> 🌟</a></li>
+
+        </ul>
+    </div>
+
+
+    <div class="weekContainer" id="1">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week1.png" alt="Week 1 Logo">
+                    <h2 class="section__title">Week 1</h2>
+                    <h1>Introduction to Professional Skills</h1>
+                    <h4>Host by-:Miss.Ishara Weerasinghe</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟I was able to understand module content and week plan.
+                    <br> 🌟We did a group activity to categorizing workplace skills.
+                    <br> 🌟So we able to identify Technical skills,Soft skills and Transferable skills.
+                    <br> 🌟We did a role play case study on a workplace scenario involving professional skill challenge.
+                    <br> 🌟According to that we did a wonderfull small act during the lecture session and we get good
+                    feedback from the lecture.
+                    <br> 🌟Finally we did a quize on introduction to Professional Skills.
+                </p>
+
+
+        </section>
+        <a href="/Notes and pdf/Week 1.pdf" download="Week1 Content"><button class="btn">Download Week
+                1</button></a>
+
+    </div>
+    </section>
+    </div>
+
+    <div class="weekContainer" id="2">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week2 .png" alt="Week 2 Logo">
+                    <h2 class="section__title">Week 2</h2>
+                    <h1>CV and Cover letter writing</h1>
+                    <h4>Host by-:Miss.Ishara Weerasinghe</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about CV and cover letter writting.
+                    <br> 🌟Johari Window which talk about our open area,blond area,hidden are and unknown area were also
+                    discussed.
+                    <br> 🌟We made a sample CV and cover letter according to instruction given by lecturer.
+                    <br> 🌟According to that we did during the lecture session and we get good
+                    feedback from the lecture.
+                    <br> 🌟Finally we told to make professional cv and cover letter for our mock interviews.
+                    <br> 🌟CV and Cover letters are folloving.
+                </p>
+
+                <a href="/Notes and pdf/Week2.pdf" download="Week2 Content"><button class="btn">Download Week
+                        2</button></a><br>
+                <a href="/Notes and pdf/Professional Modern CV Resume (2).pdf" download="NadunMadawalaCV"><button
+                        class="btn">Download CV</button></a>
+            </div>
+
+    </div>
+    <div class="weekContainer" id="3">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week3.png" alt="Week 3 Logo">
+                    <h2 class="section__title">Week 3</h2>
+                    <h1>Interview Skills</h1>
+                    <h4>Host by-:Miss.Ishara Weerasinghe</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about how to face a interviews correctly.
+                    <br> 🌟Do's and Dont's in interviews also discussed.
+                    <br> 🌟We practiced the conversations normally happen between appplicant and representative of an
+                    organization.
+                    <br> 🌟According to that we did during the lecture session and we get good
+                    feedback from the lecture.
+                    <br> 🌟We done a small quize about what we learn during the session.
+                    <br> 🌟Finally we told to how to face the interviews in correct manner.
+                    <br> 🌟End of the semester there was our mock interviews and I was able to score 28.5/30 which is
+                    almost the best score.
+                </p>
+
+                <a href="/Notes and pdf/Week 3.pdf" download="Week 3 Content"><button class="btn">Download Week
+                        3</button></a>
+            </div>
+        </section>
+    </div>
+
+    <div class="weekContainer" id="4">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week4.png" alt="Week 4 Logo">
+                    <h2 class="section__title">Week 4</h2>
+                    <h1>Portfolio writing</h1>
+                    <h4>Host by-:Miss.Ishara Weerasinghe</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about portfolio making.
+                    <br> 🌟Uses of portfolio,purposes of aportfolio and the Advantage that we can get from it disscussed
+                    here.
+                    <br> 🌟We made a sample portfolio according to instruction given by lecturer.
+                    <br> 🌟According to that we did during the lecture session and we get good
+                    feedback from the lecture.
+                    <br> 🌟Finally we told to how make professional portfolio for our own.
+                    <br> 🌟End of the semester I was able to made this portfolio what I learn from this session. .
+                </p>
+
+                <a href="/Notes and pdf/Week 4.pdf" download="Week 4 Content"><button class="btn">Download Week
+                        4</button></a>
+
+            </div>
+        </section>
+    </div>
+
+
+    <div class="weekContainer" id="5">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week5.png" alt="Week 5 Logo">
+                    <h2 class="section__title">Week 5</h2>
+                    <h1>Email writing and ethiquette and Meetings</h1>
+                    <h4>Host by-:Miss.Ishara Weerasinghe</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about what are email writing ethiquette and Meetings.
+                    <br> 🌟Do's and Dont's in Emails and Meetings also discussed.
+                    <br> 🌟We practiced the email writings in the session.
+                    <br> 🌟According to that we did during the lecture session and we get good
+                    feedback from the lecture.
+                    <br> 🌟We done a Worksheet about what we learn during the session.
+                    <br> 🌟Types of the meeting ,how to plan a meeting and how to participate and host meeting were also
+                    discussed.
+
+                </p>
+
+                <a href="/Notes and pdf/Week 5.pdf" download="Week 5 Content"><button class="btn">Download Week
+                        5</button></a>
+
+            </div>
+        </section>
+    </div>
+
+
+    <div class="weekContainer" id="6">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week6.png" alt="Week 6 Logo">
+                    <h2 class="section__title">Week 6</h2>
+                    <h1>Telephone Ethiquette</h1>
+                    <h4>Host by-:Miss.Ishara Weerasinghe</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about telephone ethiquette.
+                    <br> 🌟Do's and Dont's while using telephone calls also discussed.
+                    <br> 🌟We practiced the conversations normally happen between appplicant and representative of an
+                    organization.
+                    <br> 🌟We done a small quize about what we learn during the session.
+                    <br> 🌟Finally we told to how use telephone calls in correct manner.
+                    <br> 🌟End of the session we were told to make a poster refering the work sheeet given so made a
+                    beautiful poster as a group.
+                    <br> 🌟According to that we did during the lecture session and we get good
+                    feedback from the lecture.
+                </p>
+                <div class="destination__card">
+                    <img src="images/TelephoneEthiques groupPhoto.jpg " alt="groupPhoto" />
+                </div>
+                <a href="/Notes and pdf/Week 6.pdf" download="Week 6 Content"><button class="btn">Download Week
+                        6</button></a>
+
+            </div>
+        </section>
+    </div>
+
+
+    <div class="weekContainer" id="7">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week7.png" alt="Week 7 Logo">
+                    <h2 class="section__title">Week 7</h2>
+                    <h1>Negotiation Skills</h1>
+                    <h4>Host by-:Mr.Shenal Rajakarunanayaka</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about how to improve our Negotiation Skills.
+                    <br> 🌟Do's and Dont's while negotiating also discussed.
+                    <br> 🌟We practiced the conversations normally happen between appplicant and representative of an
+                    organization when mostly talk about salary like situations.
+
+                    <br> 🌟Finally we told to how to do negotiate in correct manner.
+                    <br> 🌟End of the session we were told to do a act about scenario how we handle negotiate that
+                    situaion.
+                    <br> 🌟According to that we did during the lecture session and we get good
+                    feedback from the lecture.Video of the act is as folloving.
+                </p>
+                <video width="320" height="240" controls>
+                    <source src="videos/Negotiation video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <a href="/Notes and pdf/Week 7.pdf" download="Week 7 Content"><button class="btn">Download Week
+                        7</button></a>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="weekContainer" id="8">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/week8.png" alt="Week 8 Logo">
+                    <h2 class="section__title">Week 8</h2>
+                    <h1>Imotional Inteligance & Dining ethiquette</h1>
+                    <h4>Host by-:Dr.B.M.K.Perea</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟In this week we were taught about how to improve our Imotional Inteligance and correct way of
+                    Dining ethiquette.
+                    <br> 🌟Do's and Dont's while Dining also discussed.
+                    <br> 🌟We talked about the situations and how to be Imotionaly Inteligant normally happen between in
+                    an
+                    organization.
+
+                    <br> 🌟Finally we told to how to do behave and eat in Dining in a correct manner.
+                    <br> 🌟End of the session we were told to do why we always should be happy and how to be happy.
+                    <br> 🌟According to that we did during the lecture session we asked questions and we get good
+                    feedback from the lecture.
+                </p>
+
+                <a href="/Notes and pdf/Week 8.pdf" download="Week 8 Content"><button class="btn">Download Week
+                        8</button></a>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="weekContainer" id="9">
+        <section class="section__container destination__container" id="topStory">
+            <div class="section__header">
+                <div class="logo-container">
+                    <img src="images/star.png" alt="Week 9 Logo">
+                    <h2 class="section__title">Week 9</h2>
+                    <h1>Food Fiesta</h1>
+                    <h4>Group ChakaBlast</h4>
+                </div>
+                <p class="section__subtitle">
+                    🌟As a group, we are glad to be a part of that wonderful food festival. We were the only group to
+                    conduct games, so we were able to get that opportunity and successfully organize and deliver it.
+                    Most of the players and visitors who came to our stall gave us their feedback on our stall which was
+                    very good and supportive. So, although we could not make many profits, we had lot of fun and
+                    gathered lot of experience to our life. So, we are glad to have a subject like PS to organize a
+                    wonderful event. Finally, all because of team effort we were able to do our best to make a
+                    successful Food Festival.
+                </p>
+
+                <section class="section__container destination__container" id="topStory">
+
+                    <div class="destination__grid">
+                        <div class="destination__card">
+                            <img src="images/GroupPhoto.jpg" alt="destination" />
+
+                        </div>
+                        <div class="destination__card">
+                            <img src="images/grop.jpg" alt="destination" />
+                        </div>
+                        <div class="destination__card">
+                            <img src="/images/my.jpg " alt="destination" />
+
+                        </div>
+                        <div class="destination__card">
+                            <img src="images/yasas.jpg" alt="destination" />
+
+                        </div>
+                        <div class="destination__card">
+                            <img src="images/NAme.jpg" alt="destination" />
+
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <a href="/Notes and pdf/FoodFestival Report.pdf" download="FoodFestival final Report"><button
+                    class="btn">Download
+                    Report</button></a>
+
+    </div>
+    </section>
+    </div>
+
+    <footer class="footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3>NadunMadawala<span>.</span></h3>
+                <p>
+                    This is the portfolio for Professional Skills module which I have done in 2 nd year 2 nd
+                    semester.All the
+                    content and expeirience I got are included.
+                    Attendence:100%
+                </p>
+            </div>
+            <div class="footer__col">
+                <h4>Navigation</h4>
+
+                <a href="index.html ">Home</a><br>
+                <a href="timeline.html">TimeLine</a><br>
+                <a href="Content.html">Content</a><br>
+
+
+            </div>
+            <div class="footer__col">
+                <h4>Details</h4>
+                <p>
+                    <span>Name:</span> D.N.C.Madawala-SA22407498
+
+                </p>
+                <p>
+                    <span>Address:</span> No:28/1,Sigiriwalawatta,Galahitiyawa,Madampe
+                </p>
+                <p><span>Email:</span> nmadawala96@gmail.com</p>
+                <p><span>Phone:</span>0741165342</p>
+            </div>
+        </div>
+        <div class="footer__bar">
+            Copyright © 2023 Nadun Madawala.
+            SLIIT Academy All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>
